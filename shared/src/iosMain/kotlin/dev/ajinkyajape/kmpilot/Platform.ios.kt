@@ -4,7 +4,8 @@ import platform.Foundation.NSLog
 import platform.UIKit.UIDevice
 import platform.UIKit.UIScreen
 
-actual  class Platform (){
+@Suppress("EXPECT_ACTUAL_CLASSIFIERS_ARE_IN_BETA_WARNING")
+actual  class Platform {
     actual val osName: String
         get() = UIDevice.currentDevice.systemName
     actual val osVersion: String

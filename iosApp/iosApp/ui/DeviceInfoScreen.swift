@@ -39,6 +39,7 @@ struct DeviceInfoScreen: View {
     
     var body: some View {
         Text("About Device")
+            .padding(16)
             .font(.headline)
             .fontWeight(.bold)
         

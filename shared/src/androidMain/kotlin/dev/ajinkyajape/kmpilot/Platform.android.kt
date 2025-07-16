@@ -6,7 +6,8 @@ import android.util.Log
 import kotlin.math.round
 
 
-actual class Platform(){
+@Suppress("EXPECT_ACTUAL_CLASSIFIERS_ARE_IN_BETA_WARNING")
+actual class Platform{
     actual val osName: String
         get() = "Android"
     actual val osVersion: String

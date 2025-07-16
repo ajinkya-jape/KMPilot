@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    //id("co.touchlab.skie") version "0.4.19"
 }
 
 kotlin {
@@ -28,9 +29,21 @@ kotlin {
     }
 
     sourceSets {
+        //put your multiplatform dependencies here
         commonMain.dependencies {
-            //put your multiplatform dependencies here
+            implementation(libs.kotlinx.coroutines.core)
         }
+
+        //put your android dependencies here
+        androidMain.dependencies {
+            implementation(libs.androidx.lifecycle.viewmodel.ktx)
+        }
+
+        //put your ios dependencies here
+        iosMain.dependencies { 
+
+        }
+
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
