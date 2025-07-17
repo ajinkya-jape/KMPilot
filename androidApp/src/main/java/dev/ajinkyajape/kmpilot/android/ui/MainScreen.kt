@@ -16,9 +16,7 @@ import dev.ajinkyajape.kmpilot.news.NewsViewModel
  */
 
 @Composable
-fun MainScreen (
-    newsViewModel: NewsViewModel
-) {
+fun MainScreen () {
 
     val navController = rememberNavController()
 
@@ -32,8 +30,7 @@ fun MainScreen (
         ) {
             composable(EScreens.NEWS.route) {
                 NewsScreen(
-                    onAboutButtonClick = { navController.navigate(EScreens.ABOUT.route) },
-                    newsViewModel,
+                    onAboutButtonClick = { navController.navigate(EScreens.ABOUT.route) }
                 )
             }
 

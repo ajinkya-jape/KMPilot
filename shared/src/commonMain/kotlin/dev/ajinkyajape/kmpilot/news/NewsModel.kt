@@ -4,9 +4,20 @@ package dev.ajinkyajape.kmpilot.news
  * Created by Ajinkya Jape on 15/07/25.
  */
 
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class NewsModel(
-    val sNewsTitle : String,
-    val sNewsDesc : String,
-    val sNewsDate : String,
-    val sNewsImgUrl : String,
+    @SerialName("title")
+    val sNewsTitle: String,
+
+    @SerialName("description")
+    val sNewsDesc: String?,
+
+    @SerialName("publishedAt")
+    val sNewsDate: String,
+
+    @SerialName("urlToImage")
+    val sNewsImgUrl: String?
 )

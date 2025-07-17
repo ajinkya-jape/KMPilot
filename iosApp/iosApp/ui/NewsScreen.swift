@@ -18,9 +18,10 @@ extension NewsScreen{
         private var job: Kotlinx_coroutines_coreJob?
         
         @Published var newsState: NewsState
+            //NewsInjector().newsViewModel
         
         init() {
-            newsViewModel = NewsViewModel()
+            newsViewModel = NewsInjector().newsViewModel
             newsState = newsViewModel.newsState.value as! NewsState
         }
         
@@ -87,7 +88,7 @@ struct NewsItemView : View{
        
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            AsyncImage(url: URL(string: newsModel.sNewsImgUrl)) { phase in
+            AsyncImage(url: URL(string: newsModel.sNewsImgUrl!)) { phase in
                 if phase.image != nil {
                     phase.image!
                         .resizable()
@@ -102,7 +103,7 @@ struct NewsItemView : View{
                 .font(.title3)
                 .fontWeight(.bold)
                
-            Text(newsModel.sNewsDesc)
+            Text(newsModel.sNewsDesc!)
                
             Text(newsModel.sNewsDate)
                 .frame(maxWidth: .infinity, alignment: .trailing)

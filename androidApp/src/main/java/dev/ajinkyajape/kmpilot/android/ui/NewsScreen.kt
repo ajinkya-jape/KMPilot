@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import dev.ajinkyajape.kmpilot.news.NewsModel
 import dev.ajinkyajape.kmpilot.news.NewsViewModel
+import org.koin.compose.viewmodel.koinViewModel
 
 /**
  * Created by Ajinkya Jape on 15/07/25.
@@ -40,7 +41,7 @@ import dev.ajinkyajape.kmpilot.news.NewsViewModel
 @Composable
 fun NewsScreen(
     onAboutButtonClick: () -> Unit,
-    newsViewModel: NewsViewModel,
+    newsViewModel: NewsViewModel = koinViewModel(),
 ) {
 
     val articlesState = newsViewModel.newsState.collectAsState()
@@ -95,18 +96,23 @@ fun NewsItemView(news: NewsModel) {
     ) {
         AsyncImage(
             model = news.sNewsImgUrl,
-            contentDescription = null
+            contentDescription = null,
         )
         Spacer(modifier = Modifier.height(4.dp))
+
         Text(
             text = news.sNewsTitle,
             style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 22.sp)
         )
         Spacer(modifier = Modifier.height(8.dp))
-        Text(text = news.sNewsDesc)
+
+        news.sNewsDesc?.let { Text(text = it) }
+
         Spacer(modifier = Modifier.height(4.dp))
+
         Text(
             text = news.sNewsDate,
+            fontWeight = FontWeight.SemiBold,
             style = TextStyle(color = Color.Gray),
             modifier = Modifier.align(Alignment.End)
         )

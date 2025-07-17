@@ -14,9 +14,6 @@ import dev.ajinkyajape.kmpilot.android.ui.MainScreen
 import dev.ajinkyajape.kmpilot.news.NewsViewModel
 
 class MainActivity : ComponentActivity() {
-
-    val newsViewModel : NewsViewModel by viewModels()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -25,7 +22,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MainScreen(newsViewModel)
+                    MainScreen()
                 }
             }
         }

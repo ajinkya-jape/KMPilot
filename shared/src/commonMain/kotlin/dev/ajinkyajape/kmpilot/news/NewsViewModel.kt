@@ -1,6 +1,11 @@
 package dev.ajinkyajape.kmpilot.news
 
 import dev.ajinkyajape.kmpilot.BaseViewModel
+import dev.ajinkyajape.kmpilot.news.api.ApiServices
+import dev.ajinkyajape.kmpilot.news.api.NewsUseCase
+import io.ktor.client.HttpClient
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.serialization.kotlinx.json.json
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -8,11 +13,14 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kotlinx.serialization.json.Json
 
 /**
  * Created by Ajinkya Jape on 15/07/25.
  */
-class NewsViewModel : BaseViewModel() {
+class NewsViewModel(
+    private val newsUseCase : NewsUseCase
+) : BaseViewModel() {
 
     private val _newState: MutableStateFlow<NewsState> = MutableStateFlow(NewsState(bLoading = true))
     val newsState: StateFlow<NewsState> get() = _newState
@@ -21,6 +29,7 @@ class NewsViewModel : BaseViewModel() {
         getNews()
     }
 
+    // For iOS
     fun observeNewsState(callback: (NewsState) -> Unit): Job {
         return CoroutineScope(Dispatchers.Main).launch {
             newsState.collect {
@@ -31,11 +40,8 @@ class NewsViewModel : BaseViewModel() {
 
     private fun getNews(){
         scope.launch {
-            delay(2000)
-            _newState.emit(NewsState(sError= "Somthing went wrong!!"))
-
-            delay(2000)
-            _newState.emit(NewsState(newsList = fetchNews()))
+            val fetchedNewsData = newsUseCase.fetchNews()
+            _newState.emit(NewsState(newsList = fetchedNewsData))
         }
 
     }
