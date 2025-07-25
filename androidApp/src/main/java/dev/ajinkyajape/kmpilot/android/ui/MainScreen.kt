@@ -8,15 +8,15 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import dev.ajinkyajape.kmpilot.NewsViewModel
 import dev.ajinkyajape.kmpilot.android.utils.EScreens
-import dev.ajinkyajape.kmpilot.news.NewsViewModel
 
 /**
  * Created by Ajinkya Jape on 15/07/25.
  */
 
 @Composable
-fun MainScreen () {
+fun MainScreen (newsViewModel: NewsViewModel) {
 
     val navController = rememberNavController()
 
@@ -27,10 +27,12 @@ fun MainScreen () {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(it),
+
         ) {
             composable(EScreens.NEWS.route) {
                 NewsScreen(
-                    onAboutButtonClick = { navController.navigate(EScreens.ABOUT.route) }
+                    onAboutButtonClick = { navController.navigate(EScreens.ABOUT.route) },
+                    newsViewModel
                 )
             }
 

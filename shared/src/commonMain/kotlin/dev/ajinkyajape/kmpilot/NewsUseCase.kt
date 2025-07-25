@@ -1,6 +1,5 @@
-package dev.ajinkyajape.kmpilot.news.api
+package dev.ajinkyajape.kmpilot
 
-import dev.ajinkyajape.kmpilot.news.NewsModel
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone

@@ -17,13 +17,15 @@ extension NewsScreen{
         let newsViewModel: NewsViewModel
         private var job: Kotlinx_coroutines_coreJob?
         
-        @Published var newsState: NewsState
-            //NewsInjector().newsViewModel
-        
         init() {
-            newsViewModel = NewsInjector().newsViewModel
+
+           // self.newsViewModel = NewsInjector().mNewsViewModel
+            newsViewModel = NewsViewModel()
             newsState = newsViewModel.newsState.value as! NewsState
+            
         }
+        
+        @Published var newsState: NewsState
         
         func startObserving(){
             job = newsViewModel.observeNewsState { [weak self] newState in
@@ -87,8 +89,11 @@ struct NewsItemView : View{
     var newsModel: NewsModel
        
     var body: some View {
+        
+        let imgURL : String = "https://fastly.picsum.photos/id/28/4928/3264.jpg?hmac=GnYF-RnBUg44PFfU5pcw_Qs0ReOyStdnZ8MtQWJqTfA"
+        
         VStack(alignment: .leading, spacing: 8) {
-            AsyncImage(url: URL(string: newsModel.sNewsImgUrl!)) { phase in
+            AsyncImage(url: URL(string: newsModel.sNewsImgUrl ?? imgURL )) { phase in
                 if phase.image != nil {
                     phase.image!
                         .resizable()

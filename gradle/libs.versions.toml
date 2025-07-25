@@ -11,8 +11,8 @@ lifecycleViewmodelKtx = "2.6.2"
 navigationCompose = "2.7.5"
 coilCompose = "2.5.0"
 ktorClient = "2.3.5"
-koin = "4.1.0"
-koinCoreMultiplatform = "4.1.0"
+koin = "4.0.4"
+#koinCoreMultiplatform = "4.1.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -38,7 +38,7 @@ ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "kto
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
-koin-core-multiplatform = { module = "io.insert-koin:koin-core-multiplatform", version.ref = "koinCoreMultiplatform" }
+#koin-core-multiplatform = { module = "io.insert-koin:koin-core-multiplatform", version.ref = "koinCoreMultiplatform" }
 
 
 [plugins]

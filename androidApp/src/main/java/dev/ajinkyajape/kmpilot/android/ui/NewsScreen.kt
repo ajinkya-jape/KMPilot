@@ -30,8 +30,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import dev.ajinkyajape.kmpilot.news.NewsModel
-import dev.ajinkyajape.kmpilot.news.NewsViewModel
+import dev.ajinkyajape.kmpilot.NewsModel
+import dev.ajinkyajape.kmpilot.NewsViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
 /**
@@ -41,7 +41,7 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 fun NewsScreen(
     onAboutButtonClick: () -> Unit,
-    newsViewModel: NewsViewModel = koinViewModel(),
+    newsViewModel: NewsViewModel,
 ) {
 
     val articlesState = newsViewModel.newsState.collectAsState()

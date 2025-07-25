@@ -1,10 +1,9 @@
-package dev.ajinkyajape.kmpilot.news.api
+package dev.ajinkyajape.kmpilot
 
 /**
  * Created by Ajinkya Jape on 17/07/25.
  */
 
-import dev.ajinkyajape.kmpilot.news.NewsModel
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

@@ -1,4 +1,4 @@
-package dev.ajinkyajape.kmpilot.news
+package dev.ajinkyajape.kmpilot
 
 /**
  * Created by Ajinkya Jape on 15/07/25.
@@ -19,5 +19,5 @@ data class NewsModel(
     val sNewsDate: String,
 
     @SerialName("urlToImage")
-    val sNewsImgUrl: String?
+    val sNewsImgUrl: String? = ""
 )
